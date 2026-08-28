@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none">
+  <!-- Same silhouette the orb draws: ellipse(0, -78, 42, 66) × 5 + filled center r=34 -->
+  <g transform="translate(200 200)" fill="#2042e8">
+    <ellipse cx="0" cy="-78" rx="42" ry="66"/>
+    <ellipse cx="0" cy="-78" rx="42" ry="66" transform="rotate(72)"/>
+    <ellipse cx="0" cy="-78" rx="42" ry="66" transform="rotate(144)"/>
+    <ellipse cx="0" cy="-78" rx="42" ry="66" transform="rotate(216)"/>
+    <ellipse cx="0" cy="-78" rx="42" ry="66" transform="rotate(288)"/>
+    <circle cx="0" cy="0" r="34"/>
+  </g>
+</svg>

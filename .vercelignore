@@ -1,0 +1,6 @@
+# Kept in repo for local reference — not deployed to production
+motion/
+
+# Oversized source files (compressed versions deployed instead)
+assets/asmr-project/asmr.gif
+assets/asmr-project/ASMR gif.gif

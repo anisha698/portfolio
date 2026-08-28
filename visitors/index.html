@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Visitor logs · Anisha Rajan</title>
+<link rel="icon" href="/assets/favicon-32.png?v=4" sizes="32x32" type="image/png" />
+<link rel="icon" href="/assets/favicon-192.png?v=4" sizes="192x192" type="image/png" />
+<link rel="shortcut icon" href="/assets/favicon.ico?v=4" />
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=4" />
+<meta property="og:image" content="https://anisharajan.me/assets/og-image.png?v=2" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Anisha Rajan, Designer and Developer" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://anisharajan.me/assets/og-image.png?v=2" />
+<link rel="stylesheet" href="/styles.css?v=287" />
+<script type="module" src="/analytics.js"></script>
+</head>
+<body class="plain">
+<main class="visitors-wrap">
+  <header class="visitors-head">
+    <h1>Visitor logs</h1>
+    <a href="/" class="meta">← back home</a>
+  </header>
+
+  <div id="vGrid" class="visitors-grid">
+    <p style="color:var(--home-sub); font-size:14px;">Loading…</p>
+  </div>
+</main>
+
+<script>
+(async function () {
+  const grid = document.getElementById("vGrid");
+  try {
+    const r = await fetch("/api/visitors?limit=300");
+    if (!r.ok) throw new Error("api");
+    const { visitors } = await r.json();
+    if (!visitors || visitors.length === 0) {
+      grid.innerHTML = '<p style="color:var(--home-sub); font-size:14px;">No visitors yet. Be the first.</p>';
+      return;
+    }
+    grid.innerHTML = visitors.map((v) => {
+      const d = new Date(v.date);
+      const months = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
+      const dateStr = `${String(d.getDate()).padStart(2,"0")} ${months[d.getMonth()]} ${d.getFullYear()}`;
+      const numStr = `#${String(v.n).padStart(4,"0")}`;
+      const sig = v.signatureUrl
+        ? `<img src="${v.signatureUrl}" alt="signature" />`
+        : '<span>unsigned</span>';
+      const init = v.initials ? `<div class="v-init">${v.initials}</div>` : "";
+      return `
+        <article class="v-card">
+          <div class="v-num">VISITOR ${numStr}</div>
+          <div class="v-name">${v.name || ""}</div>
+          <div class="v-date">${dateStr}</div>
+          <div class="v-sig ${v.signatureUrl ? "" : "empty"}">${sig}</div>
+          ${init}
+        </article>
+      `;
+    }).join("");
+  } catch (e) {
+    grid.innerHTML = '<p style="color:var(--home-sub); font-size:14px;">Couldn\'t load the log right now.</p>';
+  }
+})();
+</script>
+
+<footer class="plain-foot">
+  <span>© <span id="yr"></span> Anisha Rajan</span>
+  <span>ツ</span>
+</footer>
+<script>
+  document.getElementById("yr").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

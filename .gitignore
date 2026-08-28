@@ -1,0 +1,9 @@
+.vercel
+.env*
+node_modules/
+.DS_Store
+.claude/
+
+# Over GitHub 100MB limit — use asmr.mp4 on site instead
+assets/asmr-project/asmr.gif
+assets/asmr-project/ASMR gif.gif

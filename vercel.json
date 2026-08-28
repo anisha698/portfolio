@@ -1,0 +1,35 @@
+{
+  "trailingSlash": true,
+  "redirects": [
+    { "source": "/index.html", "destination": "/", "permanent": true },
+    { "source": "/about.html", "destination": "/about/", "permanent": true },
+    { "source": "/playground.html", "destination": "/playground/", "permanent": true },
+    { "source": "/visual.html", "destination": "/visual/", "permanent": true },
+    { "source": "/visitors.html", "destination": "/visitors/", "permanent": true },
+    { "source": "/motion.html", "destination": "/motion/", "permanent": true },
+    { "source": "/projects/apple-pay.html", "destination": "/projects/apple-pay/", "permanent": true },
+    { "source": "/projects/asmr.html", "destination": "/projects/asmr/", "permanent": true },
+    { "source": "/projects/employee-benefits.html", "destination": "/projects/employee-benefits/", "permanent": true },
+    { "source": "/projects/gallery.html", "destination": "/projects/gallery/", "permanent": true },
+    { "source": "/projects/gemm-internship.html", "destination": "/projects/gemm-internship/", "permanent": true },
+    { "source": "/projects/gemm-riff-pitch.html", "destination": "/projects/gemm-riff-pitch/", "permanent": true },
+    { "source": "/projects/greenbox.html", "destination": "/projects/greenbox/", "permanent": true },
+    { "source": "/projects/headout-rebrand.html", "destination": "/projects/headout-rebrand/", "permanent": true },
+    { "source": "/projects/icon-system.html", "destination": "/projects/icon-system/", "permanent": true },
+    { "source": "/projects/music-accessibility.html", "destination": "/projects/music-accessibility/", "permanent": true },
+    { "source": "/projects/nasa-research.html", "destination": "/projects/nasa-research/", "permanent": true },
+    { "source": "/projects/snowglobe.html", "destination": "/projects/snowglobe/", "permanent": true },
+    { "source": "/projects/solana.html", "destination": "/projects/solana/", "permanent": true },
+    { "source": "/projects/spotify-valentines.html", "destination": "/projects/spotify-valentines/", "permanent": true },
+    { "source": "/projects/trust-visuals.html", "destination": "/projects/trust-visuals/", "permanent": true }
+  ],
+  "headers": [
+    {
+      "source": "/assets/playground/:path*",
+      "headers": [
+        { "key": "Accept-Ranges", "value": "bytes" },
+        { "key": "Cache-Control", "value": "public, max-age=86400" }
+      ]
+    }
+  ]
+}

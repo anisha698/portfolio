@@ -1,0 +1,90 @@
+document.documentElement.setAttribute("data-theme", "light");
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Year stamp
+  const yr = document.getElementById("yr");
+  if (yr) yr.textContent = new Date().getFullYear();
+
+  // Reveal animation
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) {
+        e.target.classList.add("in");
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+
+  // Pause off-screen videos
+  const vIo = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      const v = e.target;
+      if (!e.isIntersecting && !v.paused) v.pause();
+    });
+  }, { threshold: 0.25 });
+  document.querySelectorAll("video").forEach((v) => vIo.observe(v));
+
+  // Tin collage parallax
+  initTinParallax();
+});
+
+function initTinParallax() {
+  const stages = document.querySelectorAll("[data-parallax]");
+  if (!stages.length) return;
+
+  const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (prefersReduced) return;
+
+  stages.forEach((stage) => {
+    const items = stage.querySelectorAll(".tin-item");
+    if (!items.length) return;
+
+    let rect = stage.getBoundingClientRect();
+    const recalcRect = () => { rect = stage.getBoundingClientRect(); };
+    window.addEventListener("resize", recalcRect, { passive: true });
+    window.addEventListener("scroll", recalcRect, { passive: true });
+
+    let targetX = 0;
+    let targetY = 0;
+    let currentX = 0;
+    let currentY = 0;
+    let raf = null;
+
+    const tick = () => {
+      currentX += (targetX - currentX) * 0.08;
+      currentY += (targetY - currentY) * 0.08;
+      items.forEach((item) => {
+        const depth = parseFloat(item.dataset.depth || "2");
+        const tx = currentX * depth;
+        const ty = currentY * depth;
+        item.style.setProperty("--px", `${tx.toFixed(2)}px`);
+        item.style.setProperty("--py", `${ty.toFixed(2)}px`);
+      });
+      if (Math.abs(targetX - currentX) > 0.05 || Math.abs(targetY - currentY) > 0.05) {
+        raf = requestAnimationFrame(tick);
+      } else {
+        raf = null;
+      }
+    };
+
+    const handleMove = (e) => {
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top + rect.height / 2;
+      const nx = (e.clientX - cx) / rect.width;
+      const ny = (e.clientY - cy) / rect.height;
+      targetX = nx * 8;
+      targetY = ny * 8;
+      if (!raf) raf = requestAnimationFrame(tick);
+    };
+
+    const reset = () => {
+      targetX = 0;
+      targetY = 0;
+      if (!raf) raf = requestAnimationFrame(tick);
+    };
+
+    stage.addEventListener("mousemove", handleMove);
+    stage.addEventListener("mouseleave", reset);
+  });
+}

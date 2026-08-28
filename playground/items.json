@@ -1,0 +1,27 @@
+[
+  {
+    "file": "thermocard-showcase.mp4",
+    "tags": ["SwiftUI", "Shaders"],
+    "alt": "ThermoCard — SwiftUI shader experiment"
+  },
+  {
+    "file": "glasspond-showcase.mp4",
+    "tags": ["SwiftUI", "Shaders"],
+    "alt": "GlassPond — SwiftUI shader experiment"
+  },
+  {
+    "file": "pg-img-0707.mov",
+    "tags": ["Motion", "Prototype", "UI/UX"],
+    "alt": "Screen recording clip"
+  },
+  {
+    "file": "pg-1767078283529774-2.mp4",
+    "tags": ["Motion", "Prototype", "UI/UX"],
+    "alt": "Prototype clip"
+  },
+  {
+    "file": "pg-comp-3.mp4",
+    "tags": ["Motion", "Prototype", "UI/UX"],
+    "alt": "Composition study"
+  }
+]
