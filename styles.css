@@ -2144,6 +2144,23 @@ body.page-404 .hero-orb--fallback::after {
   line-height: 1.35;
   color: var(--accent);
 }
+.hero-status--employer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35em 0.45em;
+}
+.hero-status--open {
+  margin-top: 0.35em;
+}
+.hero-status__logo {
+  display: block;
+  height: 1.05em;
+  width: auto;
+  max-width: min(168px, 42vw);
+  object-fit: contain;
+  transform: translateY(0.02em);
+}
 .hero-worked-with {
   display: flex;
   flex-wrap: wrap;
