@@ -2150,8 +2150,36 @@ body.page-404 .hero-orb--fallback::after {
   align-items: center;
   gap: 0.35em 0.45em;
 }
+.hero-status--project {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35em 0.45em;
+}
+.hero-status__project {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.22em;
+  text-decoration: none;
+}
+.hero-status__project-label {
+  text-decoration: underline;
+  text-underline-offset: 0.16em;
+  text-decoration-thickness: 1px;
+}
+.hero-status__external {
+  width: 0.62em;
+  height: 0.62em;
+  flex: none;
+  transform: translateY(-0.04em);
+}
+.hero-status__project:hover {
+  color: var(--ink);
+}
 .hero-status--open {
-  margin-top: 0.35em;
+  margin-top: 0.45em;
+  font-size: 20px;
+  color: var(--ink);
 }
 .hero-status__logo {
   display: block;
@@ -4586,6 +4614,7 @@ body.v2 .p-back-link:hover { color: var(--accent); gap: 16px; }
   .hero-title { font-size: 44px; }
   .hero-copy { font-size: 16px; }
   .hero-status { font-size: 24px; }
+  .hero-status--open { font-size: 18px; }
   .subpage-hero { padding: 0 0 16px; }
   .subpage-hero h1 { font-size: 44px; }
   .subpage-hero .subpage-sub { font-size: 16px; }
